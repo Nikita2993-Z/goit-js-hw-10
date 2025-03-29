@@ -1,19 +1,19 @@
-import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.min.css";
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
 
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
-let userSelectedDate = null;
-let timerId = null;
+export function initTimer() {
+  const startBtn = document.querySelector('[data-start]');
+  const dateInput = document.querySelector('#datetime-picker');
+  const daysEl = document.querySelector('[data-days]');
+  const hoursEl = document.querySelector('[data-hours]');
+  const minutesEl = document.querySelector('[data-minutes]');
+  const secondsEl = document.querySelector('[data-seconds]');
 
-function initTimer() {
-  const startBtn = document.querySelector("[data-start]");
-  const dateInput = document.querySelector("#datetime-picker");
-  const daysEl = document.querySelector("[data-days]");
-  const hoursEl = document.querySelector("[data-hours]");
-  const minutesEl = document.querySelector("[data-minutes]");
-  const secondsEl = document.querySelector("[data-seconds]");
+  let userSelectedDate = null;
+  let timerId = null;
 
   startBtn.disabled = true;
 
@@ -26,8 +26,8 @@ function initTimer() {
       const selectedDate = selectedDates[0];
       if (selectedDate <= new Date()) {
         iziToast.error({
-          message: "Please choose a date in the future",
-          position: "topRight",
+          message: 'Please choose a date in the future',
+          position: 'topRight',
         });
         startBtn.disabled = true;
         return;
@@ -37,7 +37,7 @@ function initTimer() {
     },
   });
 
-  startBtn.addEventListener("click", () => {
+  startBtn.addEventListener('click', () => {
     startBtn.disabled = true;
     dateInput.disabled = true;
 
@@ -64,7 +64,7 @@ function initTimer() {
   }
 
   function addLeadingZero(value) {
-    return String(value).padStart(2, "0");
+    return String(value).padStart(2, '0');
   }
 
   function convertMs(ms) {
@@ -81,5 +81,3 @@ function initTimer() {
     return { days, hours, minutes, seconds };
   }
 }
-
-export default initTimer;
