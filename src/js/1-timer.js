@@ -4,7 +4,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-export function initTimer() {
+document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.querySelector('[data-start]');
   const dateInput = document.querySelector('#datetime-picker');
   const daysEl = document.querySelector('[data-days]');
@@ -80,4 +80,5 @@ export function initTimer() {
 
     return { days, hours, minutes, seconds };
   }
-}
+});
+
